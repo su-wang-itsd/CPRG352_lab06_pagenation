@@ -27,7 +27,7 @@
         <form action="" method="post">
              <c:if test="${size>=0}">
             <ul>
-                <c:forEach var="itemname" items="${items}">
+                <c:forEach var="itemname" items="${pageItems}">
                     <li><input type="radio" name="item" value="${itemname.toString()}">${itemname.toString()}</li>
                 </c:forEach>
 
@@ -36,5 +36,10 @@
             <input type="submit" value="delete">
             <input type="hidden" name="action" value="delete">
         </form>
+        <c:if test="${page >1}">
+        <a href="ShoppingList?page=${page-1}">&lt; Back</a></c:if>
+          <c:if test="${page < items.size()/10}">
+        <a href="ShoppingList?page=${page+1}">Next &gt;</a></c:if>
+       
     </body>
 </html>
